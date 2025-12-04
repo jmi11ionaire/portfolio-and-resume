@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesse Miller | AI Product Manager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #1a1a1a;
+            --bg-card: #222222;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a8a8a8;
+            --text-muted: #6b6b6b;
+            --accent: #4ea8a6;
+            --accent-glow: rgba(78, 168, 166, 0.15);
+            --accent-secondary: #6bc4c2;
+            --border: #2a2a2a;
+            --gradient-warm: linear-gradient(135deg, #4ea8a6 0%, #6bc4c2 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 15px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 40px;
+        }
+
+        /* Hero Header */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 60px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid var(--border);
+            position: relative;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: var(--gradient-warm);
+        }
+
+        .name {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #fff 0%, #e0e0e0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--accent);
+            letter-spacing: 0.03em;
+            margin-bottom: 24px;
+        }
+
+        .summary {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            line-height: 1.75;
+            max-width: 600px;
+        }
+
+        .summary strong {
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            padding: 28px 32px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            min-width: 240px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            width: 18px;
+            height: 18px;
+            opacity: 0.6;
+        }
+
+        .contact-item a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* Sections */
+        .section {
+            margin-bottom: 55px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            color: var(--text-primary);
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* Experience */
+        .experience-item {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            gap: 40px;
+            margin-bottom: 45px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .exp-meta {
+            padding-top: 4px;
+        }
+
+        .exp-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+
+        .exp-location {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .exp-content h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .exp-company {
+            font-size: 1rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .exp-description {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .achievements {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .achievement {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 14px 18px;
+            background: var(--bg-secondary);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+        }
+
+        .achievement-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            opacity: 0.7;
+        }
+
+        .achievement-text {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .achievement-text strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .metric {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .award-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-glow);
+            border: 1px solid rgba(255, 107, 74, 0.3);
+            padding: 8px 14px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+            margin-top: 16px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .skill-category {
+            background: var(--bg-card);
+            padding: 24px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .skill-category-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--accent);
+            margin-bottom: 14px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: var(--bg-secondary);
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            transition: all 0.2s;
+        }
+
+        .skill-tag:hover {
+            border-color: var(--accent);
+            color: var(--text-primary);
+        }
+
+        /* Education & Certs */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .edu-card {
+            background: var(--bg-card);
+            padding: 24px 28px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+        }
+
+        .edu-degree {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .edu-school {
+            color: var(--accent);
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .edu-detail {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .cert-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .cert-bullet {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* Differentiators */
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .diff-card {
+            background: linear-gradient(180deg, var(--bg-card) 0%, var(--bg-secondary) 100%);
+            padding: 28px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            text-align: center;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .diff-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 107, 74, 0.3);
+        }
+
+        .diff-icon {
+            font-size: 2rem;
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .diff-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .diff-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+            
+            .name {
+                font-size: 3rem;
+            }
+            
+            .experience-item {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .skills-grid,
+            .diff-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .edu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            body {
+                background: white;
+                color: #1a1a1a;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .name {
+                background: none;
+                -webkit-text-fill-color: #1a1a1a;
+                color: #1a1a1a;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Header -->
+        <header class="hero">
+            <div class="hero-content">
+                <h1 class="name">Jesse Miller</h1>
+                <p class="title">AI Product Manager</p>
+                <p class="summary">
+                    <strong>AI-driven Product Manager</strong> blending technical depth with user empathy to build intelligent systems that scale. Former marketer/ops pro turned product builder, specializing in transforming complex data, ML models, and <strong>agentic architectures</strong> into intuitive, high-impact user experiences.
+                </p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-item">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                    <span>Portland, OR</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                    <span>(714) 727-5580</span>
+                </div>
+                <div class="contact-item">
+                    <svg class="contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <a href="mailto:mm18007@gmail.com">mm18007@gmail.com</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Experience -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Experience</h2>
+                <div class="section-line"></div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-meta">
+                    <div class="exp-date">Jun 2022 — Present</div>
+                    <div class="exp-location">Vancouver, WA</div>
+                </div>
+                <div class="exp-content">
+                    <h3>Product Manager, Advertising AI & Optimization</h3>
+                    <div class="exp-company">ZoomInfo</div>
+                    <p class="exp-description">Technical PM leading 0→1 development across brand safety, optimization, and agentic AI systems. Partner with engineering and data science to design, train, and deploy ML and LLM-based systems powering performance, forecasting, and automation at scale.</p>
+                    
+                    <div class="achievements">
+                        <div class="achievement">
+                            <svg class="achievement-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <span class="achievement-text"><strong>AI Agent Platform:</strong> Lead PM for ZoomInfo Marketing Agent—an AI orchestrator with specialized sub-agents for campaigns, audiences, integrations, and onboarding. Own end-to-end QA, evaluation, prompt engineering using <strong>LangChain</strong>, <strong>LangSmith</strong>, and <strong>MCP development</strong>. Reduced setup errors and manual QA cycles by <span class="metric">50%+</span>.</span>
+                        </div>
+                        <div class="achievement">
+                            <svg class="achievement-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                            </svg>
+                            <span class="achievement-text"><strong>Optimization Engine:</strong> Developed proprietary system improving campaign ROI through adaptive pacing, account focusing, and dynamic bidding—raised pacing <span class="metric">65% → 90%</span> and ad viewability <span class="metric">54% → 75%</span>.</span>
+                        </div>
+                        <div class="achievement">
+                            <svg class="achievement-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                            <span class="achievement-text"><strong>ML Forecasting:</strong> Launched machine learning–based forecasting and recommendation engine, driving <span class="metric">$240K+</span> incremental ad budget within 90 days.</span>
+                        </div>
+                        <div class="achievement">
+                            <svg class="achievement-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                            <span class="achievement-text"><strong>Fraud Detection:</strong> Built traffic-quality scoring model reducing inflated CTR by <span class="metric">40%</span> and improving engagement quality across advertiser campaigns.</span>
+                        </div>
+                        <div class="achievement">
+                            <svg class="achievement-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6z"/>
+                            </svg>
+                            <span class="achievement-text"><strong>UX Redesign:</strong> Redesigned campaign builder with agentic chat experiences, decreasing setup time by <span class="metric">22%</span> and improving adoption through intuitive workflow. AI-assisted prototyping reduced iteration cycles by <span class="metric">~30%</span>.</span>
+                        </div>
+                    </div>
+                    <div class="award-badge">
+                        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        2024 Company-Wide Zoomie Award — Being Relentless
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-meta">
+                    <div class="exp-date">Oct 2018 — Present</div>
+                    <div class="exp-location">Remote</div>
+                </div>
+                <div class="exp-content">
+                    <h3>Marketing & Product Consultant</h3>
+                    <div class="exp-company">Adaptive Marketing Solutions</div>
+                    <p class="exp-description">GTM strategy, analytics, and product iteration consulting for B2B clients. Bridge marketing expertise with product development insights to accelerate growth.</p>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-meta">
+                    <div class="exp-date">Jun 2021 — Jun 2022</div>
+                    <div class="exp-location">Portland, OR (Remote)</div>
+                </div>
+                <div class="exp-content">
+                    <h3>Manager, Digital Marketing Operations</h3>
+                    <div class="exp-company">Newsela</div>
+                    <div class="achievements">
+                        <div class="achievement">
+                            <svg class="achievement-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span class="achievement-text">Designed and launched company's first ABM strategy, generating <span class="metric">$4M pipeline</span> from 22 target accounts through personalized marketing and audience segmentation.</span>
+                        </div>
+                        <div class="achievement">
+                            <svg class="achievement-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2"/>
+                            </svg>
+                            <span class="achievement-text">Built ROI dashboards + ML forecasting models, increased website conversion <span class="metric">1% → 3%</span>. Enhanced attribution via Marketo/SFDC integration.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="exp-meta">
+                    <div class="exp-date">Jun 2018 — Jun 2021</div>
+                    <div class="exp-location">San Francisco, CA</div>
+                </div>
+                <div class="exp-content">
+                    <h3>Digital Marketing & ABM Manager</h3>
+                    <div class="exp-company">RollWorks</div>
+                    <p class="exp-description">Hybrid role bridging marketing strategy, analytics, and product development for leading B2B advertising platform.</p>
+                    <div class="achievements">
+                        <div class="achievement">
+                            <svg class="achievement-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <span class="achievement-text">Drove multi-channel ABM and display ad campaigns achieving <span class="metric">3:1 ROAS</span>, accelerating pipeline growth.</span>
+                        </div>
+                        <div class="achievement">
+                            <svg class="achievement-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                            </svg>
+                            <span class="achievement-text"><strong>Voice of Customer:</strong> Served as "Customer Zero" for product team—informed roadmap priorities for ads, audiences, and reporting.</span>
+                        </div>
+                        <div class="achievement">
+                            <svg class="achievement-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                            <span class="achievement-text">Designed Looker BI dashboards for real-time campaign performance insights. Improved analytics, onboarding, and tracking workflows.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <div class="skill-category-title">AI & ML Systems</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">LangSmith</span>
+                        <span class="skill-tag">MCP Development</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">Agentic Frameworks</span>
+                        <span class="skill-tag">ML Models</span>
+                        <span class="skill-tag">Forecasting</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Product & Strategy</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Product Roadmapping</span>
+                        <span class="skill-tag">Agile Development</span>
+                        <span class="skill-tag">UX Collaboration</span>
+                        <span class="skill-tag">GTM Strategy</span>
+                        <span class="skill-tag">Growth & Experimentation</span>
+                        <span class="skill-tag">B2B SaaS</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <div class="skill-category-title">Technical & Tools</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">JIRA</span>
+                        <span class="skill-tag">Confluence</span>
+                        <span class="skill-tag">AdTech</span>
+                        <span class="skill-tag">Looker</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education & Certifications -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Education & Certifications</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="edu-grid">
+                <div class="edu-card">
+                    <div class="edu-degree">B.S. Business Administration (Marketing)</div>
+                    <div class="edu-school">San Francisco State University</div>
+                    <div class="edu-detail">Graduated Cum Laude · 3.76 GPA</div>
+                </div>
+                <div class="edu-card">
+                    <div class="edu-degree" style="margin-bottom: 14px;">Certifications</div>
+                    <div class="cert-list">
+                        <div class="cert-item">
+                            <span class="cert-bullet"></span>
+                            <span>LLMs with Python for Business — Stanford E-Learning</span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-bullet"></span>
+                            <span>Pragmatic Marketing PMC-II</span>
+                        </div>
+                        <div class="cert-item">
+                            <span class="cert-bullet"></span>
+                            <span>eCornell Digital Marketing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Differentiators -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">Why Me</h2>
+                <div class="section-line"></div>
+            </div>
+            
+            <div class="diff-grid">
+                <div class="diff-card">
+                    <span class="diff-icon">🔄</span>
+                    <div class="diff-title">Practitioner → Product Builder</div>
+                    <div class="diff-desc">Rare blend of hands-on marketing expertise with deep technical product management—I've been the customer.</div>
+                </div>
+                <div class="diff-card">
+                    <span class="diff-icon">🤖</span>
+                    <div class="diff-title">Agentic AI Native</div>
+                    <div class="diff-desc">Active in the agentic AI ecosystem, leveraging emerging tools and frameworks to accelerate delivery.</div>
+                </div>
+                <div class="diff-card">
+                    <span class="diff-icon">🎯</span>
+                    <div class="diff-title">End-to-End Ownership</div>
+                    <div class="diff-desc">Strategy → system design → execution. I ship measurable impact, not just roadmaps.</div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
